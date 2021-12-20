@@ -46,7 +46,11 @@ function App() {
           {jobs.map((item, index) => {
             return (
               // once button is clicked changes state value in order to cycle through the index's of the jobs array to display all of the different jobs
-              <button key={item.id} onClick={()=> setValue(index)}>
+              <button key={item.id} 
+              onClick={()=> setValue(index)}
+              // adds the css styling: job-btn class is active unless the index is equal to the current state value (currently displaying on page) then the active-btn class will display
+              className={`job-btn ${ index === value && `active-btn`}`}
+              >
                 {item.company}
               </button>
             );
