@@ -41,6 +41,17 @@ function App() {
       </div>
       <div className="jobs-center">
         {/* btn container */}
+        <div className="btn-container">
+          {/* iterate the jobs array tp render the company keys as the info inside the buttons */}
+          {jobs.map((item, index) => {
+            return (
+              // once button is clicked changes state value in order to cycle through the index's of the jobs array to display all of the different jobs
+              <button key={item.id} onClick={()=> setValue(index)}>
+                {item.company}
+              </button>
+            );
+          })}
+        </div>
         {/* job info */}
         <article className="job-info">
           <h3>{title}</h3>
