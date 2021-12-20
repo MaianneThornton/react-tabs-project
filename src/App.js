@@ -21,18 +21,21 @@ function App() {
   // calling the fetchJobs function
   useEffect(() => {
     fetchJobs();
-  },[]);
+  }, []);
 
-  // if the page is loading display loading... otherwise display jobs
-  if (loading){
-return (
-<section className='section loading'>
-  <h1>loading...</h1>
-</section>
-);
+  if (loading) {
+    return (
+      <section className='section loading'>
+        <h1>loading...</h1>
+      </section>
+    );
   }
 
-  return <h2>jobs</h2>
+  // destructuring the jobs array (pulled from the api)
+  const { company, dates, duties, title } = jobs[value];
+  return (
+    <h2>jobs</h2>
+  );
 }
 
 export default App
