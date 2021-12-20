@@ -18,7 +18,7 @@ function App() {
     setLoading(false);
   };
 
-  // calling the fetchJobs function
+  // calling the fetchJobs function when the app renders
   useEffect(() => {
     fetchJobs();
   }, []);
@@ -31,10 +31,33 @@ function App() {
     );
   }
 
-  // destructuring the jobs array (pulled from the api)
+  // destructuring the first item in the jobs array (pulled from the api) and putting the value variable in as the parameter
   const { company, dates, duties, title } = jobs[value];
   return (
-    <h2>jobs</h2>
+    <section className="section">
+      <div className="title">
+        <h2>experience</h2>
+        <div className="underline"></div>
+      </div>
+      <div className="jobs-center">
+        {/* btn container */}
+        {/* job info */}
+        <article className="job-info">
+          <h3>{title}</h3>
+          <h4>{company}</h4>
+          <p className="job-date">{dates}</p>
+          {duties.map((duties, index) => {
+            return (
+              <div key={index} className='job-desc'>
+                <FaAngleDoubleRight className='job-icon'></FaAngleDoubleRight>
+                <p>{duties}</p>
+              </div>
+            );
+          })}
+        </article>
+      </div>
+    </section>
+
   );
 }
 
